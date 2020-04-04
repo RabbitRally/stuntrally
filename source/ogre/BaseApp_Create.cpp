@@ -281,7 +281,7 @@ bool BaseApp::configure()
 	SDL_StartTextInput();
 
 	NameValuePairList params;
-	params.insert(std::make_pair("title", "Stunt Rally"));
+	params.insert(std::make_pair("title", "Rabbit Virtual"));
 	params.insert(std::make_pair("FSAA", toStr(pSet->fsaa)));
 	params.insert(std::make_pair("vsync", pSet->vsync ? "true" : "false"));
 

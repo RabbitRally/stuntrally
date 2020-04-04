@@ -1,6 +1,5 @@
 #--  sr data
 data/ghosts/original
-data/tracks
 
 #--  build
 *build
@@ -15,15 +14,18 @@ CMakeLists.txt.user*
 *.dll
 *.pdb
 *.exe
+proj/*.lib
+proj/*.exp
+proj/.vs
 
 #-- vs crap
 *.ncb
 *.suo
 *.user
-
 *.lnk
-StuntRally*.*
-SR?Editor*.*
+*.ilk
+*.opensdf
+*.sdf
 
 #--  transl
 locale/translation*

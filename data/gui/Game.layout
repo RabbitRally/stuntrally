@@ -3,7 +3,7 @@
 	<Widget type="Window" skin="WindowC" position="1768 156 500 600" align="Center" layer="Overlapped" name="MainMenuWnd">
 		<Property key="MinSize" value="500 400"/>
 		<Property key="MaxSize" value="2560 1600"/>
-		<Property key="Caption" value="Stunt Rally"/>
+		<Property key="Caption" value="Rabbit Virtual"/>
 		<Property key="Alpha" value="0.7"/>
 		<Property key="Snap" value="true"/>
 		<UserString key="NotSized" value="1"/>
