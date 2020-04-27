@@ -57,6 +57,7 @@ namespace iteration_context_policies {
 	};
 } } }
 
+
 namespace sh
 {
 	std::string Preprocessor::preprocess (std::string source, const std::string& includePath, std::vector<std::string> definitions, const std::string& name)

@@ -4,7 +4,7 @@ Networking Design Doc
 Introduction
 ------------
 
-This document describes the architecture of Stunt Rally's networking features. It shall not go deep into implementation details, but rather stay on a higher level. The purpose is to educate other developers, list some general goals and stuff.
+This document describes the architecture of Rabbit Virtual's networking features. It shall not go deep into implementation details, but rather stay on a higher level. The purpose is to educate other developers, list some general goals and stuff.
 
 Usage notes and more detailed and lower-level information can be found by reading the comments in the header files.
 
@@ -12,7 +12,7 @@ Usage notes and more detailed and lower-level information can be found by readin
 High-level architecture
 -----------------------
 
-Client networking is split into two parts - low-level, rather abstract and general purpose networking classes that directly interface with the actual networking library, and Stunt Rally specific part, which interfaces with the low level stuff and implements the SR specific parts, like the SR application protocol and serializing state data. Rationale for this split is that the networking library can be easily swapped (if necessary) without modifying any SR-specific code and also allows to easily reuse the same lower-level code somewhere else.
+Client networking is split into two parts - low-level, rather abstract and general purpose networking classes that directly interface with the actual networking library, and Rabbit Virtual specific part, which interfaces with the low level stuff and implements the SR specific parts, like the SR application protocol and serializing state data. Rationale for this split is that the networking library can be easily swapped (if necessary) without modifying any SR-specific code and also allows to easily reuse the same lower-level code somewhere else.
 
 The first part is implemented in enet-wrapper.hpp, and the SR stuff in the other files in this network-directory.
 

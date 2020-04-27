@@ -57,7 +57,7 @@ void PATHMANAGER::Init(bool log_paths)
 		}
 	}
 
-	fs::path stuntrally = "stuntrally";
+	fs::path rabbitvirtual = "rabbitvirtual";
 	// Figure out the user's home directory
 	{
 		home_dir = "";
@@ -86,8 +86,8 @@ void PATHMANAGER::Init(bool log_paths)
 	#ifndef _WIN32 // POSIX
 	{
 		char const* conf = getenv("XDG_CONFIG_HOME");
-		if (conf) user_config = (fs::path(conf) / stuntrally).string();
-		else user_config = (fs::path(home_dir) / ".config" / stuntrally).string();
+		if (conf) user_config = (fs::path(conf) / rabbitvirtual).string();
+		else user_config = (fs::path(home_dir) / ".config" / rabbitvirtual).string();
 	}
 	#else // Windows
 	{
@@ -104,7 +104,7 @@ void PATHMANAGER::Init(bool log_paths)
 				if (AppDir[i] == '\\') str += '/';
 				else str += AppDir[i];
 			}
-			user_config = (fs::path(str) / stuntrally).string();
+			user_config = (fs::path(str) / rabbitvirtual).string();
 		}
 	}
 	#endif
@@ -113,12 +113,12 @@ void PATHMANAGER::Init(bool log_paths)
 
 	// Find user's data dir (for additional data)
 	#ifdef _WIN32
-	user_data = user_config;  // APPDATA/stuntrally
+	user_data = user_config;  // APPDATA/rabbitvirtual
 	#else
 	{
 		char const* xdg_data_home = getenv("XDG_DATA_HOME");
-		user_data = (xdg_data_home ? xdg_data_home / stuntrally
-					: fs::path(home_dir) / ".local/share" / stuntrally).string();
+		user_data = (xdg_data_home ? xdg_data_home / rabbitvirtual
+					: fs::path(home_dir) / ".local/share" / rabbitvirtual).string();
 	}
 	#endif
 
@@ -138,7 +138,10 @@ void PATHMANAGER::Init(bool log_paths)
 	// Find game data dir and defaults config dir
 	char *datadir = getenv("STUNTRALLY_DATA_ROOT");
 	if (datadir)
+	{
 		game_data = string(datadir);
+		game_config = game_data + "/config";
+	}
 	else
 	{	fs::path shareDir = SHARED_DATA_DIR;
 		Paths dirs;
@@ -159,7 +162,7 @@ void PATHMANAGER::Init(bool log_paths)
 		{
 			char const* xdg_data_dirs = getenv("XDG_DATA_DIRS");
 			istringstream iss(xdg_data_dirs ? xdg_data_dirs : "/usr/local/share/:/usr/share/");
-			for (string p; getline(iss, p, ':'); dirs.push_back(p / stuntrally)) {}
+			for (string p; getline(iss, p, ':'); dirs.push_back(p / rabbitvirtual)) {}
 		}
 		#endif
 		// TODO: Adding path from config file
@@ -190,11 +193,11 @@ void PATHMANAGER::Init(bool log_paths)
 
 	// Find cache dir
 	#ifdef _WIN32
-	cache_dir = user_config + "/cache";  // APPDATA/stuntrally/cache
+	cache_dir = user_config + "/cache";  // APPDATA/rabbitvirtual/cache
 	#else
 	char const* xdg_cache_home = getenv("XDG_CACHE_HOME");
-	cache_dir = (xdg_cache_home ? xdg_cache_home / stuntrally
-				: fs::path(home_dir) / ".cache" / stuntrally).string();
+	cache_dir = (xdg_cache_home ? xdg_cache_home / rabbitvirtual
+				: fs::path(home_dir) / ".cache" / rabbitvirtual).string();
 	#endif
 	// Create cache dir
 	CreateDir(CacheDir());
@@ -208,7 +211,7 @@ void PATHMANAGER::Init(bool log_paths)
 		info << "-------------------------" << endl;
 		info << "Ogre plugin:  " << ogre_plugin << endl;
 		info << "Data:         " << Data() << endl;
-		//info << "Default cfg:  " << GetGameConfigDir() << endl;
+		info << "Default cfg:  " << GameConfigDir() << endl;
 		info << "Home:         " << home_dir << endl;
 		info << "User cfg,log: " << UserConfigDir() << endl;
 		info << "User data:    " << user_data << endl;

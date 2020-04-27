@@ -523,10 +523,9 @@ void CHud::Create()
 	Show();  //_
 	app->bSizeHUD = true;
 	//Size();
-	
+		
 	LogO("::: Time Create Hud: "+fToStr(ti.getMilliseconds(),0,3)+" ms");
 }
-
 
 
 //  HUD destroy
